@@ -12,7 +12,10 @@ const useStyles = makeStyles({
     alignItems: 'center',
     flexDirection: 'column',
     padding: '10px',
-    gap: '10px'
+    gap: '5px',
+    position: 'absolute',
+    bottom: '140px',
+    left: '-85px'
   }
 })
 

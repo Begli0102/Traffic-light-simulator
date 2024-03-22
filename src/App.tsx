@@ -1,32 +1,29 @@
 import React, { useState } from 'react'
-import { Container, Grid, Typography, Button } from '@mui/material'
-import MainRoadTrafficLight from './components/MainRoadLight'
-import PedestrianTrafficLight from './components/PedestrianLight'
-import SensorsIcon from '@mui/icons-material/Sensors'
+import { Container, Typography, Button, Box } from '@mui/material'
 import MainRoad from './components/MainRoad'
 import SideRoad from './components/SideRoad'
-import './App.css'
 
 type TrafficLightColor = 'red' | 'yellow' | 'green'
+type PedestrianLightColor = 'red' | 'green'
 
 const App: React.FC = () => {
   // States for traffic lights and pedestrian requests
   const [mainRoadTrafficLight, setMainRoadTrafficLight] = useState<
     TrafficLightColor
   >('green')
-
   const [sideRoadTrafficLight, setSideRoadTrafficLight] = useState<
     TrafficLightColor
   >('red')
-
-  const [pedestrianLight, setPedestrianLight] = useState<'red' | 'green'>('red')
+  const [pedestrianLight, setPedestrianLight] = useState<PedestrianLightColor>(
+    'red'
+  )
   const [pedestrianRequestActive, setPedestrianRequestActive] = useState(false)
   const [trafficLightInterval, setTrafficLightInterval] = useState<
     NodeJS.Timer | undefined
   >(undefined)
 
   const setupTrafficLightCycle = () => {
-    const cycle = () => {
+    const interval = () => {
       if (!pedestrianRequestActive) {
         setMainRoadTrafficLight('yellow')
         setSideRoadTrafficLight('yellow')
@@ -55,8 +52,8 @@ const App: React.FC = () => {
       }
     }
 
-    cycle() // Start the first cycle immediately
-    const intervalId = setInterval(cycle, 10000)
+    interval() // Start the first cycle immediately
+    const intervalId = setInterval(interval, 9000)
     setTrafficLightInterval(intervalId)
   }
 
@@ -75,7 +72,6 @@ const App: React.FC = () => {
         clearInterval(trafficLightInterval)
       }
 
-      // Pedestrian light green, main and side road red
       setPedestrianLight('green')
 
       // Main Road
@@ -106,37 +102,34 @@ const App: React.FC = () => {
       <Typography textAlign='center' variant='h4' gutterBottom>
         Traffic Lights Demo
       </Typography>
-      <Grid container spacing={1}>
-        <Button
-          variant='contained'
-          sx={{ marginBottom: '20px' }}
-          onClick={() => {
-            handleStart()
-          }}
-          disabled={pedestrianRequestActive}
-        >
-          Start
-        </Button>
-        <div className='traffic-container'>
-          <Grid item>
-            <MainRoadTrafficLight color={mainRoadTrafficLight} />
-          </Grid>
-          <Grid item display='flex' flexDirection='column' alignItems='center'>
-            <PedestrianTrafficLight color={pedestrianLight} />
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={handlePedestrianRequest}
-              disabled={pedestrianRequestActive}
-              sx={{ marginTop: '10px' }}
-            >
-              <SensorsIcon />
-            </Button>
-          </Grid>
-        </div>
+      <Button
+        variant='contained'
+        sx={{ marginBottom: '20px' }}
+        onClick={() => {
+          handleStart()
+        }}
+        disabled={pedestrianRequestActive}
+      >
+        Start
+      </Button>
+      <Box
+        sx={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
         <SideRoad color={sideRoadTrafficLight} />
-        <MainRoad />
-      </Grid>
+        <MainRoad
+          color={mainRoadTrafficLight}
+          pedestrianLight={pedestrianLight}
+          handlePedestrianRequest={handlePedestrianRequest}
+          pedestrianRequestActive={pedestrianRequestActive}
+        />
+      </Box>
     </Container>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { makeStyles } from '@material-ui/core/styles'
-import { PedestrianLightProps } from '../interface'
+import SensorsIcon from '@mui/icons-material/Sensors'
 
 const useStyles = makeStyles({
   container: {
@@ -12,11 +12,24 @@ const useStyles = makeStyles({
     alignItems: 'center',
     flexDirection: 'column',
     padding: '10px',
-    gap: '10px'
+    gap: '5px',
+    position: 'absolute',
+    top: '-200px',
+    right: '80px'
   }
 })
 
-const PedestrianTrafficLight: React.FC<PedestrianLightProps> = ({ color }) => {
+interface IPedestrianLightProps {
+  color: 'red' | 'green'
+  handlePedestrianRequest: () => void
+  pedestrianRequestActive: boolean
+}
+
+const PedestrianTrafficLight: React.FC<IPedestrianLightProps> = ({
+  color,
+  handlePedestrianRequest,
+  pedestrianRequestActive
+}) => {
   const classes = useStyles()
   return (
     <div className={classes.container}>
@@ -33,6 +46,15 @@ const PedestrianTrafficLight: React.FC<PedestrianLightProps> = ({ color }) => {
         height={40}
         borderRadius='50%'
       ></Box>
+      <Button
+        variant='contained'
+        color='primary'
+        onClick={handlePedestrianRequest}
+        disabled={pedestrianRequestActive}
+        sx={{ position: 'absolute', bottom: '-50px' }}
+      >
+        <SensorsIcon />
+      </Button>
     </div>
   )
 }

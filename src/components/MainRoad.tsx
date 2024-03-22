@@ -1,21 +1,49 @@
-import { makeStyles } from '@material-ui/core/styles'
 import Pedestrian from './Pedestrian'
+import { Box, Grid } from '@mui/material'
+import MainRoadTrafficLight from './MainRoadLight'
+import PedestrianTrafficLight from './PedestrianLight'
 
-const useStyles = makeStyles({
-  mainRoad: {
-    backgroundColor: 'lightgray',
-    width: '100%',
-    height: '200px',
-    position: 'relative'
-  }
-})
+interface IMainRoadProps {
+  color: 'red' | 'yellow' | 'green'
+  pedestrianLight: 'red' | 'green'
+  handlePedestrianRequest: () => void
+  pedestrianRequestActive: boolean
+}
 
-const MainRoad = () => {
-  const classes = useStyles()
+const MainRoad: React.FC<IMainRoadProps> = ({
+  color,
+  pedestrianLight,
+  handlePedestrianRequest,
+  pedestrianRequestActive
+}) => {
   return (
-    <div className={classes.mainRoad}>
+    <Box
+      sx={{
+        position: 'absolute',
+        width: '100%',
+        height: '200px',
+        backgroundColor: 'lightgray',
+        top: '30%',
+        display: 'flex',
+        justifyContent: 'flex-start'
+      }}
+    >
       <Pedestrian />
-    </div>
+      <Grid container spacing={1}>
+        <div className='traffic-container'>
+          <Grid item >
+            <MainRoadTrafficLight color={color} />
+          </Grid>
+          <Grid item>
+            <PedestrianTrafficLight
+              color={pedestrianLight}
+              handlePedestrianRequest={handlePedestrianRequest}
+              pedestrianRequestActive={pedestrianRequestActive}
+            />
+          </Grid>
+        </div>
+      </Grid>
+    </Box>
   )
 }
 
