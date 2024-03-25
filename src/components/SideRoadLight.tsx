@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     padding: '10px',
     gap: '5px',
     position: 'absolute',
-    bottom: '140px',
+    bottom: '40px',
     left: '-85px'
   }
 })

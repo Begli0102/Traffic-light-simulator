@@ -10,7 +10,6 @@ const SideRoad: React.FC<TrafficLightProps> = ({ color }) => {
         backgroundColor: 'lightgray',
         width: '200px',
         height: '100vh',
-        margin: '0 auto',
         position:"relative"
       }}
     >
