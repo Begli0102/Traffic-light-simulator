@@ -24,7 +24,6 @@ const App: React.FC = () => {
     NodeJS.Timer | undefined
   >(undefined)
   const [startButtonClicked, setstartButtonClicked] = useState<boolean>(false)
-  console.log(startButtonClicked)
   const setupTrafficLightCycle = () => {
     const interval = () => {
       if (!pedestrianRequestActive) {
