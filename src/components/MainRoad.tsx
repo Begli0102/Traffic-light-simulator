@@ -8,13 +8,15 @@ interface IMainRoadProps {
   pedestrianLight: 'red' | 'green'
   handlePedestrianRequest: () => void
   pedestrianRequestActive: boolean
+  startButtonClicked: boolean
 }
 
 const MainRoad: React.FC<IMainRoadProps> = ({
   color,
   pedestrianLight,
   handlePedestrianRequest,
-  pedestrianRequestActive
+  pedestrianRequestActive,
+  startButtonClicked
 }) => {
   return (
     <Box
@@ -31,7 +33,7 @@ const MainRoad: React.FC<IMainRoadProps> = ({
       <Pedestrian />
       <Grid container spacing={1}>
         <div className='traffic-container'>
-          <Grid item >
+          <Grid item>
             <MainRoadTrafficLight color={color} />
           </Grid>
           <Grid item>
@@ -39,6 +41,7 @@ const MainRoad: React.FC<IMainRoadProps> = ({
               color={pedestrianLight}
               handlePedestrianRequest={handlePedestrianRequest}
               pedestrianRequestActive={pedestrianRequestActive}
+              startButtonClicked={startButtonClicked}
             />
           </Grid>
         </div>

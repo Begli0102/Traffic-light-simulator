@@ -23,12 +23,14 @@ interface IPedestrianLightProps {
   color: 'red' | 'green'
   handlePedestrianRequest: () => void
   pedestrianRequestActive: boolean
+  startButtonClicked: boolean
 }
 
 const PedestrianTrafficLight: React.FC<IPedestrianLightProps> = ({
   color,
   handlePedestrianRequest,
-  pedestrianRequestActive
+  pedestrianRequestActive,
+  startButtonClicked
 }) => {
   const classes = useStyles()
   return (
@@ -50,7 +52,7 @@ const PedestrianTrafficLight: React.FC<IPedestrianLightProps> = ({
         variant='contained'
         color='primary'
         onClick={handlePedestrianRequest}
-        disabled={pedestrianRequestActive}
+        disabled={!startButtonClicked}
         sx={{ position: 'absolute', bottom: '-50px' }}
       >
         <SensorsIcon />

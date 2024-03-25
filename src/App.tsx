@@ -17,11 +17,14 @@ const App: React.FC = () => {
   const [pedestrianLight, setPedestrianLight] = useState<PedestrianLightColor>(
     'red'
   )
-  const [pedestrianRequestActive, setPedestrianRequestActive] = useState(false)
+  const [pedestrianRequestActive, setPedestrianRequestActive] = useState<
+    boolean
+  >(false)
   const [trafficLightInterval, setTrafficLightInterval] = useState<
     NodeJS.Timer | undefined
   >(undefined)
-
+  const [startButtonClicked, setstartButtonClicked] = useState<boolean>(false)
+  console.log(startButtonClicked)
   const setupTrafficLightCycle = () => {
     const interval = () => {
       if (!pedestrianRequestActive) {
@@ -61,6 +64,9 @@ const App: React.FC = () => {
     if (!trafficLightInterval) {
       setupTrafficLightCycle()
     }
+    setTimeout(() => {
+      setstartButtonClicked(true)
+    }, 1000)
   }
 
   const handlePedestrianRequest = () => {
@@ -128,6 +134,7 @@ const App: React.FC = () => {
           pedestrianLight={pedestrianLight}
           handlePedestrianRequest={handlePedestrianRequest}
           pedestrianRequestActive={pedestrianRequestActive}
+          startButtonClicked={startButtonClicked}
         />
       </Box>
     </Container>
