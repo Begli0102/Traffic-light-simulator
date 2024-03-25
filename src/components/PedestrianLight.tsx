@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import SensorsIcon from '@mui/icons-material/Sensors'
 
 const useStyles = makeStyles({
