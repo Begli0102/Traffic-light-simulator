@@ -1,40 +1,54 @@
 import React from 'react'
 import { Box, Button } from '@mui/material'
-import { makeStyles } from '@mui/styles'
+// import { makeStyles } from '@mui/styles'
 import SensorsIcon from '@mui/icons-material/Sensors'
+import styled from 'styled-components'
 
-const useStyles = makeStyles({
-  container: {
-    width: '40px',
-    backgroundColor: '#000',
-    borderRadius: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    padding: '10px',
-    gap: '5px',
-    position: 'absolute',
-    top: '-200px',
-    right: '80px'
-  }
+const Container = styled.div({
+  width: '40px',
+  backgroundColor: '#000',
+  borderRadius: '10px',
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+  padding: '10px',
+  gap: '5px',
+  position: 'absolute',
+  top: '-200px',
+  right: '80px'
 })
+
+// const useStyles = makeStyles({
+//   container: {
+//     width: '40px',
+//     backgroundColor: '#000',
+//     borderRadius: '10px',
+//     display: 'flex',
+//     alignItems: 'center',
+//     flexDirection: 'column',
+//     padding: '10px',
+//     gap: '5px',
+//     position: 'absolute',
+//     top: '-200px',
+//     right: '80px'
+//   }
+// })
 
 interface IPedestrianLightProps {
   color: 'red' | 'green'
   handlePedestrianRequest: () => void
-  pedestrianRequestActive: boolean
   startButtonClicked: boolean
 }
 
 const PedestrianTrafficLight: React.FC<IPedestrianLightProps> = ({
   color,
   handlePedestrianRequest,
-  pedestrianRequestActive,
   startButtonClicked
 }) => {
-  const classes = useStyles()
+  // const classes = useStyles()
   return (
-    <div className={classes.container}>
+    // <div className={classes.container}>
+    <Container>
       <Box
         bgcolor={color === 'red' ? 'red' : 'grey'}
         width={40}
@@ -57,7 +71,8 @@ const PedestrianTrafficLight: React.FC<IPedestrianLightProps> = ({
       >
         <SensorsIcon />
       </Button>
-    </div>
+    </Container>
+    // </div>
   )
 }
 export default PedestrianTrafficLight

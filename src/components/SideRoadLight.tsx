@@ -1,28 +1,44 @@
 import React from 'react'
-import { makeStyles } from '@mui/styles'
+// import { makeStyles } from '@mui/styles'
 import { Box } from '@mui/material'
 import { TrafficLightProps } from '../interface'
+import styled from 'styled-components'
 
-const useStyles = makeStyles({
-  container: {
-    width: '40px',
-    backgroundColor: '#000',
-    borderRadius: '10px',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    padding: '10px',
-    gap: '5px',
-    position: 'absolute',
-    bottom: '40px',
-    left: '-85px'
-  }
+const Container = styled.div({
+  width: '40px',
+  backgroundColor: '#000',
+  borderRadius: '10px',
+  display: 'flex',
+  alignItems: 'center',
+  flexDirection: 'column',
+  padding: '10px',
+  gap: '5px',
+  position: 'absolute',
+  bottom: '40px',
+  left: '-85px'
 })
 
+// const useStyles = makeStyles({
+//   container: {
+//     width: '40px',
+//     backgroundColor: '#000',
+//     borderRadius: '10px',
+//     display: 'flex',
+//     alignItems: 'center',
+//     flexDirection: 'column',
+//     padding: '10px',
+//     gap: '5px',
+//     position: 'absolute',
+//     bottom: '40px',
+//     left: '-85px'
+//   }
+// })
+
 const SideRoadTrafficLight: React.FC<TrafficLightProps> = ({ color }) => {
-  const classes = useStyles()
+  // const classes = useStyles()
   return (
-    <div className={classes.container}>
+    // <div className={classes.container}>
+    <Container>
       <Box
         bgcolor={color === 'red' ? 'red' : 'grey'}
         width={40}
@@ -43,7 +59,8 @@ const SideRoadTrafficLight: React.FC<TrafficLightProps> = ({ color }) => {
         height={40}
         borderRadius='50%'
       ></Box>
-    </div>
+    </Container>
+    // </div>
   )
 }
 
