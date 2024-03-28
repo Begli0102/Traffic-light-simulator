@@ -1,5 +1,4 @@
 import React from 'react'
-// import { makeStyles } from '@mui/styles'
 import { Box } from '@mui/material'
 import { TrafficLightProps } from '../interface'
 import styled from 'styled-components'
@@ -18,27 +17,8 @@ const Container = styled.div({
   left: '20px'
 })
 
-// const useStyles = makeStyles({
-//   container: {
-//     width: '40px',
-//     backgroundColor: '#000',
-//     borderRadius: '10px',
-//     display: 'flex',
-//     alignItems: 'center',
-//     flexDirection: 'column',
-//     padding: '10px',
-//     gap: '5px',
-//     position: 'absolute',
-//     top: '-200px',
-//     left: '20px'
-//   }
-// })
-
 const MainRoadTrafficLight: React.FC<TrafficLightProps> = ({ color }) => {
-  // const classes = useStyles()
-
   return (
-    // <div className={classes.container}>
     <Container>
       <Box
         bgcolor={color === 'red' ? 'red' : 'grey'}
@@ -61,7 +41,6 @@ const MainRoadTrafficLight: React.FC<TrafficLightProps> = ({ color }) => {
         borderRadius='50%'
       ></Box>
     </Container>
-    // </div>
   )
 }
 
