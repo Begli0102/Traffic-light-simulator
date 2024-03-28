@@ -132,7 +132,7 @@ const App: React.FC = () => {
           color={mainRoadTrafficLight}
           pedestrianLight={pedestrianLight}
           handlePedestrianRequest={handlePedestrianRequest}
-          pedestrianRequestActive={pedestrianRequestActive}
+          // pedestrianRequestActive={pedestrianRequestActive}
           startButtonClicked={startButtonClicked}
         />
       </Box>
