@@ -13,8 +13,9 @@ const Container = styled.div({
   padding: '10px',
   gap: '5px',
   position: 'absolute',
-  bottom: '40px',
-  left: '-85px'
+  bottom: '140px',
+  left: '-85px',
+  zIndex: '10px'
 })
 
 const SideRoadTrafficLight: React.FC<TrafficLightProps> = ({ color }) => {
